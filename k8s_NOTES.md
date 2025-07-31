@@ -1,7 +1,7 @@
 # Kubernetes Notes
 
 
-[Github_k8s_files](https://github.com/akshay9700/Kubernetes)
+
 1) What is Kubernetes
 
 			- Orchestration Platform
