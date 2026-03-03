@@ -1924,6 +1924,7 @@ $ kubectl get pvc
 
 
 
-
+kubectl cordon <node>
+kubectl logs <pod-name> -c <container-name>
 
 ```
