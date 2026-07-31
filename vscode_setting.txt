@@ -1,0 +1,14 @@
+
+INSTALL VSCODE --> INSTALL YAML EXTENSION --> GO TO SCHEMA: SETTING.json
+
+=================
+
+
+    "yaml.schemas": {    
+
+        "kubernetes": "*.yaml" 
+        
+    },
+
+=================
+
