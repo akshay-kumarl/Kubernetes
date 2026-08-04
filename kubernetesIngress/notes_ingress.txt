@@ -1,0 +1,11 @@
+
+
+
+You must install an Ingress Controller — Ingress resources alone do nothing (no controller = no routing).
+
+ingressClassName tells Kubernetes which controller should handle this Ingress (useful if you have multiple installed).
+
+Ingress only handles HTTP/HTTPS (Layer 7) — for raw TCP/UDP, you'd need LoadBalancer services or controller-specific extensions (e.g., NGINX's TCP/UDP ConfigMap).
+
+DNS must point your domain(s) to the Ingress Controller's external IP/LoadBalancer.
+
