@@ -122,6 +122,16 @@ Multiple environments (dev/staging/prod) are usually handled with separate value
 
 
   
+# Lint for structural errors
+helm lint .
+
+# Render templates locally to check output
+helm template sampleapp .
+
+# Dry-run against a real cluster (catches API/schema issues)
+helm install sampleapp . --dry-run --debug
+
+
 
 
 
