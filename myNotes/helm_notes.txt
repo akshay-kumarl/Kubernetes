@@ -136,3 +136,92 @@ helm install sampleapp . --dry-run --debug
 
 
 
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+templates/namespace.yaml
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace.name }}
+
+=============================
+templates/deployment.yaml
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sampledeploy
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: samplehtmlweb
+  template:
+    metadata:
+      name: samplepod
+      labels:
+        app: samplehtmlweb
+        version: v1
+    spec:
+      containers:
+        - name: samplecontainer
+          image: "{{ .Values.deployment.image }}:{{ .Values.deployment.tag }}"
+          ports:
+            - containerPort: 8080
+
+
+=============================
+templates/service.yaml
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: samplesvc
+  namespace: {{ .Values.namespace.name }}
+spec:
+  type: {{.Values.service.type}}
+  selector:
+    app: samplehtmlweb
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: {{ .Values.service.nodePort }}
+
+=============================
+Chart.yaml            
+# this is a metadata file for the Helm chart
+
+apiVersion: v2
+name: mysampleapp
+description: A Helm chart for the Facebook app
+type: application
+version: 0.1.0
+=============================
+values.yaml
+
+namespace:
+  name: samplens
+
+deployment:
+  image: akshay0909/blogapp
+  tag: "1.0" or latest
+  replicaCount: 3
+
+service:
+  type: NodePort
+  nodePort: 32222
+
+=============================
+
+
+
+
+
