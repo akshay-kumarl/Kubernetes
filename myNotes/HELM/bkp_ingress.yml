@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:905221885307:certificate/ed8f4616-50ea-4c8e-aeb1-c61ee0c0607f
     alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
-  ingressClassName: alb
+  ingressClassName: alb        #[nginx; alb]
   rules:
     - host: vote.b17catsvsdogs.xyz
       http:
