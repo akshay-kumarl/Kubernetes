@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fb-pod
+  labels:
+    app: facebook
+spec:
+
+  nodeSelector: 
+    topology.kubernetes.io/zone: us-east-1b
+
+  containers:
+    - name: fb-container
+      image: devopshubg333/batch17d:httpd
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: fb-pv
+          mountPath: /var/www/html
+
+  volumes:
+    - name: fb-pv
+      persistentVolumeClaim:
+        claimName: fb-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fb-svc
+  labels:
+    app: facebook
+spec:
+  type: LoadBalancer
+  selector:
+    app: facebook
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
