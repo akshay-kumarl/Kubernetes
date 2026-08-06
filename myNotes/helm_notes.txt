@@ -221,7 +221,30 @@ service:
 
 =============================
 
+for example 
+
+use chatgpt with cmd "i want to create sample helm repo with sample 1 or 2 charts"
+
+for packaging 
+follow commands 
+how to add as a repo > type this command in chatgpt for instructions 
+
+to package the charts 
+helm package charts/nginx-app
+helm package charts/mysql-db
+
+create repository index 
+helm repo index . 
 
 
 
+
+sample-helm-repo/
+├── charts/
+│   ├── nginx-app/
+│   └── mysql-db/
+├── index.yaml
+├── nginx-app-0.1.0.tgz
+├── mysql-db-0.1.0.tgz
+└── README.md
 
