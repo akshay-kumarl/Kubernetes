@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-efs-static
+  labels:
+    app: nginx 
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: efs-static-pv
+      mountPath: /usr/share/nginx/html  # docker -v HP:cp 
+  
+  volumes:
+  - name: efs-static-pv
+    persistentVolumeClaim:
+      claimName: efs-static
+
+
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-lb
+spec:
+  type: LoadBalancer
+  selector: # labels are used as selectors
+    app: nginx 
+  ports:
+   - port: 80 # service port
+     targetPort: 80
