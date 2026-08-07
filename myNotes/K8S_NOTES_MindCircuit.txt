@@ -2771,7 +2771,8 @@ Dynamic provisioning is recommended for production environments because it reduc
 
 DATE: 26 JUNE 26
 
-Kubernetes Volume Provisioning on EKS using Amazon EFS
+Kubernetes Volume Provisioning on EKS using Amazon EFS.    
+another way to do is with helm see chatgpt for instructions
 
 Amazon EFS is a fully-managed, network-attached, shared file system that can be mounted by multiple pods across multiple nodes simultaneously. This makes it ideal for workloads requiring shared access, like web servers, content management systems, or big data pipelines.
 
