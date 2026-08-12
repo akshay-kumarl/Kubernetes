@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: samplens
+
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: sampleds
+  namespace: samplens
+  labels:
+    app: sampleapp
+spec:
+  selector:
+    matchLabels:
+      app: sampleapp
+  template:
+    metadata:
+      labels:
+        app: sampleapp
+    spec:
+      containers:
+        - name: samplecontainer
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: samplevol
+              mountPath: /app
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+      volumes:
+        - name: samplevol
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: samplesvc
+  namespace: samplens
+spec:
+  type: LoadBalancer
+  selector:
+    app: sampleapp
+  ports:
+    - port: 80
+      targetPort: 80
