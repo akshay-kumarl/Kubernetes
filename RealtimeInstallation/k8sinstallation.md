@@ -1,3 +1,11 @@
+# Install k8s in AWS
+
+```
+check System/CPU architecture
+uname -m
+
+below script is supported for AMD64/x86_64
+```
 
 # Step - 1 : Create EKS Management Host in AWS 
 
