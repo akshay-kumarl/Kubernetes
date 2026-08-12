@@ -77,3 +77,42 @@ Note: Cluster creation will take 5 to 10 mins of time (we have to wait). After c
 ```
 kubectl get nodes  
 ```
+
+
+
+---
+
+#### Cluster Notes
+
+eksctl create cluster  
+
+--> it creates  two m5.large large nodes by default for data plane . Insted go for t3.micro
+
+  
+     Control Plane - AWS WILL TAKE CARE !   
+     Data Plane  - 2 m5.large worker nodes 
+
+
+eksctl create cluster --name <name> --version <> --nodegroup-name <> --node-type t3.micro --nodes 4 --managed 
+
+
+
+eksctl create cluster --name b17dcluster --nodegroup-name b17ng --node-type t3.micro --nodes 4 --managed 
+
+
+
+
+```
+eksctl upgrade nodegroup \
+  --cluster <cluster-name> \
+  --name <nodegroup-name> \
+  --region <region> \
+  --kubernetes-version 1.36
+
+eksctl upgrade nodegroup \
+  --cluster it-cluster \
+  --name ng-1 \
+  --region us-east-1 \
+  --kubernetes-version 1.36
+
+```  
