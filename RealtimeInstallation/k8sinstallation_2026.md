@@ -116,4 +116,12 @@ eksctl upgrade nodegroup \
   --region us-east-1 \
   --kubernetes-version 1.36
 
+
+eksctl delete cluster -f sample.yaml
+eksctl get cluster
+eksctl delete acluster
+
 ```  
+
+
+
