@@ -101,6 +101,7 @@ eksctl create cluster --name b17dcluster --nodegroup-name b17ng --node-type t3.m
 
 
 
+to update the cluster from 1.34 to 1.36
 
 ```
 eksctl upgrade nodegroup \
