@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: acluster
+  region: ap-south-1
+
+availabilityZones:
+  - ap-south-1a
+  - ap-south-1b
+
+managedNodeGroups:
+  - name: worker-nodes
+    instanceType: t3.micro
+    desiredCapacity: 7
+    minSize: 7
+    maxSize: 7
