@@ -119,7 +119,7 @@ eksctl upgrade nodegroup \
 
 eksctl delete cluster -f sample.yaml
 eksctl get cluster --region ap-south-1
-eksctl delete acluster
+eksctl delete cluster --name acluster --region ap-south-1
 
 ```  
 
